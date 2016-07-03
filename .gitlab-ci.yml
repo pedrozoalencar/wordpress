@@ -4,11 +4,12 @@ test:
   - sh -c 'if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi'
 
 homolog:
-    image: monostream/rancher-compose
+    image: ixis/rancher-compose
     variables:
         RANCHER_URL: http://104.210.155.64:8080/
     stage: deploy
     script: 
         - sh ""
-        - sudo rancher-compose --url http://104.210.155.64:8080/ --access-key 73BD21A749CACCA42DDE --secret-key kTktKzGtthueDYqXDdtYkNdT5aDE8xPfNnXJcheU -p feed-site up --upgrade
+        - whereis rancher-compose
+        - rancher-compose --url http://104.210.155.64:8080/ --access-key 73BD21A749CACCA42DDE --secret-key kTktKzGtthueDYqXDdtYkNdT5aDE8xPfNnXJcheU -p feed-site up --upgrade
     environment: homolog
