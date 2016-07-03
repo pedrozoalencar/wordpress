@@ -3,14 +3,21 @@ test:
   script:
   - sh  -c 'if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi'
 
+build:
+   image: docker:latest
+   services:
+   - docker:dind
+   stage: build
+   script: 
+        - docker login 104.210.155.64:5500
+        - docker build -t 104.210.155.64:5500/root/wordpress .
+        - docker push 104.210.155.64:5500/root/wordpress
+
 homolog:
     image: ixis/rancher-compose
     variables:
         RANCHER_URL: http://104.210.155.64:8080/
     stage: deploy
     script: 
-        - docker login 104.210.155.64:5500
-        - docker build -t 104.210.155.64:5500/root/wordpress .
-        - docker push 104.210.155.64:5500/root/wordpress
         - rancher-compose --url http://104.210.155.64:8080/ --access-key 73BD21A749CACCA42DDE --secret-key kTktKzGtthueDYqXDdtYkNdT5aDE8xPfNnXJcheU -p feed-site -f docker-compose-homolog.yml up --upgrade -d
     environment: homolog
