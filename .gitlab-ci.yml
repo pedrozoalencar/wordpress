@@ -4,7 +4,7 @@ test:
   - sh -c 'if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi'
 
 homolog:
-    image: wordpress
+    image: evgeniyklemin/rancher-compose
     variables:
         RANCHER_URL: http://104.210.155.64:8080/
     stage: deploy
