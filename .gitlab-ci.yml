@@ -10,5 +10,5 @@ homolog:
     stage: deploy
     script: 
         - sh ""
-        - sh rancher-compose --url http://104.210.155.64:8080/ --access-key 73BD21A749CACCA42DDE --secret-key kTktKzGtthueDYqXDdtYkNdT5aDE8xPfNnXJcheU -p feed-site up --upgrade
+        - sudo rancher-compose --url http://104.210.155.64:8080/ --access-key 73BD21A749CACCA42DDE --secret-key kTktKzGtthueDYqXDdtYkNdT5aDE8xPfNnXJcheU -p feed-site up --upgrade
     environment: homolog
