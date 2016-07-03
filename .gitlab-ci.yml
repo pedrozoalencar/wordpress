@@ -5,11 +5,9 @@ test:
 
 build:
    image: docker:latest
-   services:
-   - docker:dind
    stage: build
    script: 
-        - docker login 104.210.155.64:5500
+        - docker login  -u 73BD21A749CACCA42DDE -p kTktKzGtthueDYqXDdtYkNdT5aDE8xPfNnXJcheU 104.210.155.64:5500
         - docker build -t 104.210.155.64:5500/root/wordpress .
         - docker push 104.210.155.64:5500/root/wordpress
 
