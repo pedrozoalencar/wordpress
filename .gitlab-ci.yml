@@ -9,5 +9,5 @@ homolog:
         RANCHER_URL: http://104.210.155.64:8080/
     stage: deploy
     script: 
-        - rancher-compose --url http://104.210.155.64:8080/ --access-key 73BD21A749CACCA42DDE --secret-key kTktKzGtthueDYqXDdtYkNdT5aDE8xPfNnXJcheU -p feed-site up --upgrade
+        - rancher-compose --url http://104.210.155.64:8080/ --access-key 73BD21A749CACCA42DDE --secret-key kTktKzGtthueDYqXDdtYkNdT5aDE8xPfNnXJcheU -p feed-site -f docker-compose-homolog.yml up --upgrade
     environment: homolog
