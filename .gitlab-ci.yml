@@ -2,3 +2,8 @@ php7:
   image: wordpress
   script:
   - sh -c 'if find . -name "*.php" ! -path "./vendor/*" -exec php -l {} 2>&1 \; | grep "syntax error, unexpected"; then exit 1; fi'
+
+homolog:
+    stage: deploy
+    script: git push production HEAD:master
+    environment: homolog
