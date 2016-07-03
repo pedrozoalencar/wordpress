@@ -1,0 +1,23 @@
+wordpress:
+  image: wordpress:4.5.3
+  restart: always
+  links:
+    - db
+  ports:
+    - 8084:80
+  volumes: 
+    - ./wp-content:/var/www/html/wp-content
+  environment: 
+    WORDPRESS_DB_HOST: db:3306
+    WORDPRESS_DB_PASSWORD: wordpress
+
+db:
+  image: mysql:5.7
+  volumes:
+    - "./.data/db:/var/lib/mysql"
+  restart: always
+  environment:
+    MYSQL_ROOT_PASSWORD: wordpress
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    MYSQL_PASSWORD: wordpress
