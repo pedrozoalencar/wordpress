@@ -5,5 +5,5 @@ php7:
 
 homolog:
     stage: deploy
-    script: git push production HEAD:master
+    script: ls -la
     environment: homolog
