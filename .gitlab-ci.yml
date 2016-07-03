@@ -7,6 +7,8 @@ build:
    image: docker:latest
    stage: build
    script: 
+        - echo "DOCKER_OPTS='--insecure-registry 104.210.155.64:5500'" >> /etc/default/docker
+        - echo "DOCKER_OPTS='--insecure-registry 104.210.155.64:5500'" >> /etc/sysconfig/docker
         - docker login  -u 73BD21A749CACCA42DDE -p kTktKzGtthueDYqXDdtYkNdT5aDE8xPfNnXJcheU 104.210.155.64:5500
         - docker build -t 104.210.155.64:5500/root/wordpress .
         - docker push 104.210.155.64:5500/root/wordpress
