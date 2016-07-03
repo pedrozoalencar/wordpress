@@ -1,5 +1,5 @@
 wordpress:
-  image: wordpress:4.5.3
+  image: 104.210.155.64:5500/root/wordpress
   restart: always
   links:
     - db
